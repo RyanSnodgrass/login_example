@@ -3,7 +3,13 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = User.authenticate(params[:email], params[:password])
+	#	user = User.authenticate(params[:email], params[:password])
+	user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
+	#\/ what this is doing is the lines below - \/
+	# user = User.find_by_email(params[:email])
+	# if user
+	# 	user.authenticate(params[:password])
+	# end
 		if user
 			#session starts as an empty hash
 			#basically creating a hash {session: {user_id: user.id}}
