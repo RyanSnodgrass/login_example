@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
 			user
 		else
-			flash.now.alert = "invalid email or pw"
 			nil
 		end
 	end
