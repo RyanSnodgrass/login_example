@@ -3,7 +3,7 @@
 = form_tag sessions_path do
 		= label_tag :email
 		= text_field :email, params[:email]
-/if the login fails, the email field stays in the form			
+		/if the login fails, the email field stays in the form			
 		= password_field_tag :password
 		%br
 		= submit_tag "Login"
